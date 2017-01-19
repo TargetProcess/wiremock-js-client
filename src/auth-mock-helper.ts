@@ -1,8 +1,8 @@
-import fs from 'fs'
-import path from 'path'
-import rsaPemToJwk from 'rsa-pem-to-jwk'
-import jwt from 'jsonwebtoken'
-import urlJoin from 'url-join'
+import * as fs from 'fs'
+import * as path from 'path'
+import * as rsaPemToJwk from 'rsa-pem-to-jwk'
+import * as jwt from 'jsonwebtoken'
+import * as urlJoin from 'url-join'
 import {WiremockClient} from './wiremock-client'
 
 const jwksUri = '/.well-known/openid-configuration/jwks'
