@@ -33,7 +33,7 @@ export class WiremockClient {
         if (isPattern) {
             mock.request.urlPattern = url
         } else {
-            mock.request.url = url
+            mock.request.urlPath = url
         }
 
         return mock;

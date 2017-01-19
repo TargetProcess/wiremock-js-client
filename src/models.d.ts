@@ -1,6 +1,6 @@
 declare interface IRequest{
     method?: string;
-    url?: string;
+    urlPath?: string;
     urlPattern?: string;
 }
 
