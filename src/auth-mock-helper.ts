@@ -21,7 +21,7 @@ export class AuthMockHelper {
         if (!this.authBaseUrl) {
             this.authBaseUrl = '';
         }
-        this.authUrl = this.authBaseUrl ? this.wiremockUrl : urlJoin(this.wiremockUrl, this.authBaseUrl)
+        this.authUrl = this.authBaseUrl ? urlJoin(this.wiremockUrl, this.authBaseUrl) : this.wiremockUrl
         this.wiremockClient = new WiremockClient(this.wiremockUrl)
     }
 
