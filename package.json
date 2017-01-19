@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Javascript client for congiuring wiremock instance",
   "main": "bin/index.js",
+  "types": "bin/index.d.ts",
   "scripts": {
     "test": "test"
   },
