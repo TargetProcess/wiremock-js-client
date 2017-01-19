@@ -10,6 +10,7 @@ export class WiremockClient {
     }
 
     public mockRequest(mock: IRequestMock) {
+        console.log(mock)
         let options = {
             json: mock
         }
