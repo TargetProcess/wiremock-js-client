@@ -15,7 +15,6 @@ class WiremockClient {
         this.allMocksUri = `${this.wiremockUrl}/__admin/mappings`;
     }
     mockRequest(mock) {
-        console.log(mock);
         let options = {
             json: mock
         };

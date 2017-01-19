@@ -18,7 +18,7 @@ class AuthMockHelper {
         if (!this.authBaseUrl) {
             this.authBaseUrl = '';
         }
-        this.authUrl = urlJoin(this.wiremockUrl, this.authBaseUrl);
+        this.authUrl = this.authBaseUrl ? this.wiremockUrl : urlJoin(this.wiremockUrl, this.authBaseUrl);
         this.wiremockClient = new wiremock_client_1.WiremockClient(this.wiremockUrl);
     }
     createToken(scopes) {
