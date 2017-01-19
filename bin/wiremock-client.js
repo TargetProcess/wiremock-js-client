@@ -1,5 +1,5 @@
 "use strict";
-const sync_request_1 = require("sync-request");
+const request = require("sync-request");
 class WiremockClient {
     constructor(wiremockUrl) {
         this.wiremockUrl = wiremockUrl;
@@ -18,7 +18,7 @@ class WiremockClient {
         let options = {
             json: mock
         };
-        var response = sync_request_1.default('POST', this.newMockUri, options);
+        var response = request('POST', this.newMockUri, options);
         response.getBody();
     }
     createMock(method, url, statusCode, body, isPattern, headers, fault) {
@@ -60,7 +60,7 @@ class WiremockClient {
         this.createMock(method, url, statusCode, "", true);
     }
     clearMocks() {
-        sync_request_1.default('DELETE', this.allMocksUri);
+        request('DELETE', this.allMocksUri);
     }
 }
 exports.WiremockClient = WiremockClient;
