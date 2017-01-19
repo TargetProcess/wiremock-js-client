@@ -1,4 +1,4 @@
-import request from 'sync-request'
+import * as request from 'sync-request'
 
 export class WiremockClient {
     private allMocksUri: string = ''
