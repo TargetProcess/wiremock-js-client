@@ -6,9 +6,10 @@ declare interface IRequest{
 
 declare interface IResponse{
     status: number;
-    body: any;
+    body?: any;
     headers?: Object; 
     fault?: string;
+    jsonBody?: Object;
 }
 
 declare interface IRequestMock{

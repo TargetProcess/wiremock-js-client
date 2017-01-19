@@ -17,7 +17,7 @@ export class WiremockClient {
         response.getBody()
     }
 
-    private createMock(method: string, url: string, statusCode: number, body: any, isPattern: boolean, headers?, fault?: string) {
+    private createRequest(method: string, url: string, statusCode: number, body: any, isPattern: boolean, headers?, fault?: string): IRequestMock {
         let mock: IRequestMock = {
             request: {
                 method: method,
@@ -36,6 +36,12 @@ export class WiremockClient {
             mock.request.url = url
         }
 
+        return mock;
+    }
+
+    private createMock(method: string, url: string, statusCode: number, body: any, isPattern: boolean, headers?, fault?: string) {
+        let mock = this.createRequest(method, url, statusCode, body, isPattern, headers, fault)
+
         this.mockRequest(mock)
     }
 
@@ -48,11 +54,17 @@ export class WiremockClient {
     }
 
     public createJsonMock(method: string, url: string, responseBody) {
-        this.createMock(method, url, 200, responseBody, false, { 'Content-Type': 'application/json' })
+        let mock = this.createRequest(method, url, 200, '', false, { 'Content-Type': 'application/json' })
+        delete mock.response.body
+        mock.response.jsonBody = responseBody;
+        this.mockRequest(mock)
     }
 
     public createJsonMockPattern(method: string, urlPattern: string, responseBody) {
-        this.createMock(method, urlPattern, 200, responseBody, true, { 'Content-Type': 'application/json' })
+        let mock = this.createRequest(method, urlPattern, 200, '', true, { 'Content-Type': 'application/json' })
+        delete mock.response.body
+        mock.response.jsonBody = responseBody;
+        this.mockRequest(mock)
     }
 
     public createStatusCodeMock(method: string, url: string, statusCode: number) {
