@@ -1,0 +1,28 @@
+{
+  "extends": "tslint:latest",
+  "rules": {
+    "no-console": [
+      false
+    ],
+    "member-ordering": [
+      false
+    ],
+    "quotemark": [
+      true,
+      "single"
+    ],
+    "semicolon": [
+      true,
+      "never"
+    ],
+    "trailing-comma": [
+      true,
+      {
+        "multiline": "never",
+        "singleline": "never"
+      }
+    ],
+    "no-angle-bracket-type-assertion": false,
+    "object-literal-sort-keys": false
+  }
+}

@@ -5,8 +5,10 @@
   "main": "bin/index.js",
   "types": "bin/index.d.ts",
   "scripts": {
-    "test": "test",
-    "build": "tsc"
+    "test": "npm run lint",
+    "build": "tsc",
+    "lint": "tslint --format verbose \"src/**/*.ts\"",
+    "fix": "tslint --fix \"src/**/*.ts\""
   },
   "repository": {
     "type": "git",
@@ -31,6 +33,7 @@
   },
   "devDependencies": {
     "@types/node": "^7.0.0",
+    "tslint": "^4.4.2",
     "typescript": "^2.1.5"
   }
 }
