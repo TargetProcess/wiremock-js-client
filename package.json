@@ -25,7 +25,8 @@
   },
   "homepage": "https://github.com/TargetProcess/wiremock-js-client#readme",
   "files": [
-    "bin"
+    "bin",
+    "data"
   ],
   "dependencies": {
     "fs": "0.0.1-security",
