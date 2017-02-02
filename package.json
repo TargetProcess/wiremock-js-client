@@ -1,6 +1,6 @@
 {
   "name": "wiremock-js-client",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "JavaScript client for configuring wiremock instance",
   "main": "bin/index.js",
   "types": "bin/index.d.ts",
