@@ -24,8 +24,8 @@ export class AuthMockHelper {
     this.wiremockClient = new WiremockClient(this.wiremockUrl)
   }
 
-  public createToken(scopes: string[]) {
-    return jwt.sign({ scope: scopes }, pem,
+  public createToken(payload: { scope?: string[], sub?: string}) {
+    return jwt.sign(payload, pem,
       {
         algorithm: 'RS256',
         expiresIn: '1h',
@@ -34,8 +34,7 @@ export class AuthMockHelper {
   }
 
   // tslint:disable-next-line:max-line-length
-  public setupMetadataEndpoint(scopesSupported = ['openid', 'email'],
-                               claimsSupported = ['sub', 'email', 'email_verified']) {
+  public setupMetadataEndpoint(meta: { scopesSupported? :string[], claimsSupported? : string[] }) {
     const metadata = {
       issuer: this.authUrl,
       jwks_uri: `${this.authUrl}/.well-known/openid-configuration/jwks`,
@@ -48,8 +47,8 @@ export class AuthMockHelper {
       introspection_endpoint: `${this.authUrl}/connect/introspect`,
       frontchannel_logout_supported: true,
       frontchannel_logout_session_supported: true,
-      scopes_supported: scopesSupported,
-      claims_supported: claimsSupported,
+      scopes_supported: meta.scopesSupported ? meta.scopesSupported : ['openid', 'email'],
+      claims_supported: meta.claimsSupported ? meta.claimsSupported : ['sub', 'email', 'email_verified'],
       // tslint:disable-next-line:max-line-length
       response_types_supported: ['code', 'token', 'id_token', 'id_token token', 'code id_token', 'code token', 'code id_token token'],
       response_modes_supported: ['form_post', 'query', 'fragment'],
