@@ -21,14 +21,14 @@ class AuthMockHelper {
         this.authUrl = this.authBaseUrl ? urlJoin(this.wiremockUrl, this.authBaseUrl) : this.wiremockUrl;
         this.wiremockClient = new wiremock_client_1.WiremockClient(this.wiremockUrl);
     }
-    createToken(scopes) {
-        return jwt.sign({ scope: scopes }, pem, {
+    createToken(payload) {
+        return jwt.sign(payload, pem, {
             algorithm: 'RS256',
             expiresIn: '1h',
             header: { kid: 'f3ac035dfb99d1c6f12015c014555242317159df' }
         });
     }
-    setupMetadataEndpoint(scopesSupported = ['openid', 'email'], claimsSupported = ['sub', 'email', 'email_verified']) {
+    setupMetadataEndpoint(meta) {
         const metadata = {
             issuer: this.authUrl,
             jwks_uri: `${this.authUrl}/.well-known/openid-configuration/jwks`,
@@ -41,8 +41,8 @@ class AuthMockHelper {
             introspection_endpoint: `${this.authUrl}/connect/introspect`,
             frontchannel_logout_supported: true,
             frontchannel_logout_session_supported: true,
-            scopes_supported: scopesSupported,
-            claims_supported: claimsSupported,
+            scopes_supported: meta.scopesSupported ? meta.scopesSupported : ['openid', 'email'],
+            claims_supported: meta.claimsSupported ? meta.claimsSupported : ['sub', 'email', 'email_verified'],
             response_types_supported: ['code', 'token', 'id_token', 'id_token token', 'code id_token', 'code token', 'code id_token token'],
             response_modes_supported: ['form_post', 'query', 'fragment'],
             grant_types_supported: ['authorization_code', 'client_credentials', 'refresh_token', 'implicit'],
