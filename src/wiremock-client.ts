@@ -1,4 +1,5 @@
 import * as request from 'sync-request'
+import {IRequestMock} from './models'
 
 export class WiremockClient {
   private allMocksUri: string = ''

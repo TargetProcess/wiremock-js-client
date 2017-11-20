@@ -1,10 +1,10 @@
-declare interface IRequest {
+export interface IRequest {
   method?: string
   urlPath?: string
   urlPattern?: string
 }
 
-declare interface IResponse {
+export interface IResponse {
   status: number
   body?: any
   headers?: Object
@@ -12,7 +12,7 @@ declare interface IResponse {
   jsonBody?: Object
 }
 
-declare interface IRequestMock {
+export interface IRequestMock {
   request: IRequest
   response: IResponse
 }

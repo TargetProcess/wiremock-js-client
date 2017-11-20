@@ -9,7 +9,8 @@
     "clean": "rimraf bin",
     "build": "npm run clean && tsc --pretty",
     "lint": "tslint --format verbose \"src/**/*.ts\"",
-    "fix": "tslint --fix \"src/**/*.ts\""
+    "fix": "tslint --fix \"src/**/*.ts\"",
+    "validate": "npm ls"
   },
   "repository": {
     "type": "git",

@@ -1,3 +1,4 @@
+import { IRequestMock } from './models';
 export declare class WiremockClient {
     private wiremockUrl;
     private allMocksUri;
