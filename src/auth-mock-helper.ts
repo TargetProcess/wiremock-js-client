@@ -25,7 +25,7 @@ export class AuthMockHelper {
     this.wiremockClient = new WiremockClient(this.wiremockUrl)
   }
 
-  public createToken(payload: ITokenPayload) {
+  public createToken(payload: ITokenPayload | any) {
     return jwt.sign(payload, pem,
       {
         algorithm: 'RS256',
