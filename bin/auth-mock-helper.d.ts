@@ -5,7 +5,7 @@ export declare class AuthMockHelper {
     private authUrl;
     private wiremockClient;
     constructor(wiremockUrl: string, authBaseUrl?: string);
-    createToken(payload: ITokenPayload): any;
+    createToken(payload: ITokenPayload | any): any;
     setupMetadataEndpoint(meta: {
         scopesSupported?: string[];
         claimsSupported?: string[];
