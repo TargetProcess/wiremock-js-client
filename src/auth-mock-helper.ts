@@ -3,6 +3,7 @@ import * as jwt from 'jsonwebtoken'
 import * as path from 'path'
 import * as rsaPemToJwk from 'rsa-pem-to-jwk'
 import * as urlJoin from 'url-join'
+import { ITokenPayload } from './models'
 import { WiremockClient } from './wiremock-client'
 
 const jwksUri = '/.well-known/openid-configuration/jwks'
@@ -24,7 +25,7 @@ export class AuthMockHelper {
     this.wiremockClient = new WiremockClient(this.wiremockUrl)
   }
 
-  public createToken(payload: { scope?: string[], sub?: string}) {
+  public createToken(payload: ITokenPayload) {
     return jwt.sign(payload, pem,
       {
         algorithm: 'RS256',
@@ -34,7 +35,7 @@ export class AuthMockHelper {
   }
 
   // tslint:disable-next-line:max-line-length
-  public setupMetadataEndpoint(meta: { scopesSupported? :string[], claimsSupported? : string[] }) {
+  public setupMetadataEndpoint(meta: { scopesSupported?: string[], claimsSupported?: string[] }) {
     const metadata = {
       issuer: this.authUrl,
       jwks_uri: `${this.authUrl}/.well-known/openid-configuration/jwks`,

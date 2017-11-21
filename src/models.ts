@@ -16,3 +16,9 @@ export interface IRequestMock {
   request: IRequest
   response: IResponse
 }
+
+export interface ITokenPayload {
+  scope?: string[]
+  sub?: string
+  email?: string
+}
