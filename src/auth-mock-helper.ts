@@ -30,7 +30,7 @@ export class AuthMockHelper {
       {
         algorithm: 'RS256',
         expiresIn: '1h',
-        header: { kid: 'f3ac035dfb99d1c6f12015c014555242317159df' }
+        header: { kid: '442802BE2AB597A24123226E7BC66DCD53A11D98' }
       })
   }
 
@@ -74,7 +74,7 @@ export class AuthMockHelper {
         kty: 'RSA',
         alg: 'RS256',
         use: 'sig',
-        kid: 'f3ac035dfb99d1c6f12015c014555242317159df',
+        kid: '442802BE2AB597A24123226E7BC66DCD53A11D98',
         n: jwk.n,
         e: jwk.e
       }]
